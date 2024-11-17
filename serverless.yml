@@ -1,0 +1,16 @@
+service: product-microservice
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  environment:
+    PRODUCT_TABLE: Products
+    TAXONOMY_TABLE: ProductTaxonomyAttributes
+
+functions:
+  graphql:
+    handler: graphql.handler
+    events:
+      - http:
+          path: graphql
+          method: post
